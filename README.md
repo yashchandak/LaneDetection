@@ -1,7 +1,7 @@
 # LaneDetection
 
 
-Methodology:
+<b>Methodology:</b>
 
 <b>A) Selection of Region of Interest:</b>
  We exploited the mounted camera's property which is so placed that nearly bottom half of the image is the road.
@@ -17,7 +17,7 @@ To get the intensity value of each pixel, we change the color space from RGB to 
 
 This helps in faster computation without rejecting any valuable information. Bad lighting conditions can make the image harder to process and might result in false results. To avoid this, median filtering was applied. A square kernel of window size 5 was taken and passed over the entire image. 
 
-C) Probable lane marking segmentation: 
+<b>C) Probable lane marking segmentation: </b>
 Primary step in the lane marking detection is to identify probable lane marking segments. 
 ![alt tag](https://raw.github.com/yashchandak/LaneDetection/master/Document/equation1.png)
 
@@ -31,7 +31,7 @@ The possible lane markings were selected based on the above parameters. δ Repre
 max and min represent the maximum and minimal lane width possible in the given image.
 Keeping ε value 5 helps in avoiding noises. Max value is dependent on the image size and the mounted camera's position. If the camera is kept very low then because of high perspective and being closer to lane, lane width will be larger near the base as compared to the time when camera is mounted on the top. Minimum by default always remains 0 at vanishing point; otherwise it can be adjusted if required. Once max is set, the above formula can be used to get lane width at varying distances dynamically. Dynamically changing the lane width helps in accurate selection of lanes.
  
-D) Selecting only possible lane segments from above processed image:
+<b>D) Selecting only possible lane segments from above processed image:</b>
 
 The above segmentation process often selects other unwanted noise or regions similar to lane (eg, milestones, edges of vehicles, railings, trees, lampposts, headlight glare etc.).
 
@@ -41,15 +41,15 @@ We exploited the geometric features of a lane segment and based on its property 
 
 Lane segment properties taken into consideration were:
 
-	Segment area. Area of segments below minArea threshold denote unwanted object  and hence were rejected.
+Segment area. Area of segments below minArea threshold denote unwanted object  and hence were rejected.
 	
-	Ratio of sides. Being a line segment, the ratio of its length to breadth should be greater than 4:1 at least. Only segments with higher ratio were taken into account. Segments having area less than certain threshold but more than minArea can possibly represent small broken centre lane markings and hence ratio for them was brought down to 2:1.
+Ratio of sides. Being a line segment, the ratio of its length to breadth should be greater than 4:1 at least. Only segments with higher ratio were taken into account. Segments having area less than certain threshold but more than minArea can possibly represent small broken centre lane markings and hence ratio for them was brought down to 2:1.
 	
-	Orientation. Lane segments by the virtue of their nature are never close to horizontal (unless extremely steep turn is encountered). This property helped us in removing highlighted vehicle bumpers and other segments which were otherwise being treated as false positives.
+Orientation. Lane segments by the virtue of their nature are never close to horizontal (unless extremely steep turn is encountered). This property helped us in removing highlighted vehicle bumpers and other segments which were otherwise being treated as false positives.
 	
-	Vertical lane segments are possible only if the vehicle is on the lane, in such cases the lane segment will be near the bottom centre region of the image only. Every other vertical segment detected cannot be lanes hence are discarded.
+Vertical lane segments are possible only if the vehicle is on the lane, in such cases the lane segment will be near the bottom centre region of the image only. Every other vertical segment detected cannot be lanes hence are discarded.
 
-	A min area rectangle was bounded to the detected segment. Lane being very close to rectangles, if the segment area was not close to area of bounding rectangle then the segment was rejected.
+A min area rectangle was bounded to the detected segment. Lane being very close to rectangles, if the segment area was not close to area of bounding rectangle then the segment was rejected.
 
 <b>Results</b>
 
