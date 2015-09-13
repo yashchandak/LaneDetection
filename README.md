@@ -30,7 +30,8 @@ The possible lane markings were selected based on the above parameters. δ Repre
 
 max and min represent the maximum and minimal lane width possible in the given image.
 Keeping ε value 5 helps in avoiding noises. Max value is dependent on the image size and the mounted camera's position. If the camera is kept very low then because of high perspective and being closer to lane, lane width will be larger near the base as compared to the time when camera is mounted on the top. Minimum by default always remains 0 at vanishing point; otherwise it can be adjusted if required. Once max is set, the above formula can be used to get lane width at varying distances dynamically. Dynamically changing the lane width helps in accurate selection of lanes.
- 
+
+
 <b>D) Selecting only possible lane segments from above processed image:</b>
 
 The above segmentation process often selects other unwanted noise or regions similar to lane (eg, milestones, edges of vehicles, railings, trees, lampposts, headlight glare etc.).
@@ -39,7 +40,7 @@ We exploited the geometric features of a lane segment and based on its property 
 [Suzuki85] algorithm1.Then a minimum area rectangle was drawn around it to get its orientation, length and breadth properties.
 
 
-Lane segment properties taken into consideration were:
+<b>Lane segment properties taken into consideration were:</b>
 
 Segment area. Area of segments below minArea threshold denote unwanted object  and hence were rejected.
 	
