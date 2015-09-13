@@ -19,13 +19,13 @@ This helps in faster computation without rejecting any valuable information. Bad
 
 <b>C) Probable lane marking segmentation: </b>
 Primary step in the lane marking detection is to identify probable lane marking segments. 
-![alt tag](https://github.com/yashchandak/LaneDetection/tree/master/Documents/equation1.png)
+![Eq 1: ](https://github.com/yashchandak/LaneDetection/tree/master/Documents/equation1.jpg)
 
 
 The possible lane markings were selected based on the above parameters. δ Represents the lane width. The lane being brighter in intensity relative to its sides, only if both sides are darker and the sum of the intensity value difference on either side is between a given range then only the pixel is considered as a part of lane segment. The range was calculated using numerous sample point and plotting them. It was found to vary between the 0.25 and 0.75 based on output image’s lighting conditions, which after pre-processing the image for better contrast and brightness can be ideally chosen to be around 0.5.  Any difference less than that come under noise or non-lane parts. The lane width varies based on distance because of the perspective. Near the base it’s maximum whereas near the vanishing point it’s minimal. Lane width at any row(r) of the image is calculated using the following formula:
 		
 
-█![alt tag](https://github.com/yashchandak/LaneDetection/tree/master/Documents/equation2.png)
+█![Eq 2:](https://github.com/yashchandak/LaneDetection/tree/master/Documents/equation2.jpg)
 
 
 max and min represent the maximum and minimal lane width possible in the given image.
@@ -54,5 +54,5 @@ A min area rectangle was bounded to the detected segment. Lane being very close 
 
 <b>Results</b>
 
-![alt tag](https://github.com/yashchandak/LaneDetection/tree/master/Documents/results.png)
+![Results](https://github.com/yashchandak/LaneDetection/tree/master/Documents/results.jpg)
 
